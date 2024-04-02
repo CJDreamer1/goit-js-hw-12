@@ -36,7 +36,7 @@ async function onFormSubmit(e) {
       // Якщо отримано порожній масив зображень, показати повідомлення про відсутність зображень
       iziToast.error({
         position: 'topRight',
-        color: 'blue',
+        color: 'red',
         title: 'Error',
         message:
           'Sorry, there are no images matching your search query. Please try again!',
@@ -45,7 +45,13 @@ async function onFormSubmit(e) {
       renderArticles(data.hits);
     }
   } catch (error) {
-    console.log(error);
+    iziToast.error({
+      position: 'topRight',
+      color: 'red',
+      title: 'Error',
+      message:
+        'Sorry, there are no images matching your search query. Please try again!',
+    });
   }
 
   loader.classList.add('loader-hidden'); // Сховати анімацію після запиту
@@ -62,7 +68,13 @@ async function onLoadMoreClick() {
     const data = await getArticles(query, currentPage);
     renderArticles(data.hits);
   } catch (error) {
-    console.log(error);
+    iziToast.error({
+      position: 'topRight',
+      color: 'red',
+      title: 'Error',
+      message:
+        'Sorry, there are no images matching your search query. Please try again!',
+    });
   }
   myScroll();
   checkBtnStatus();
