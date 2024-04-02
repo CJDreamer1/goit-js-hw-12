@@ -203,3 +203,6 @@
   border-style: none;
   margin-top: 32px;
 }
+.load-more-btn:hover {
+  background-color: #6c8cff;
+}
