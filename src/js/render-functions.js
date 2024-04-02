@@ -30,17 +30,16 @@ export function articleTemplate(obj) {
 
 // ================================================ функція яка створює розимітку для масива ====================================
 function articlesTemplate(arr) {
-  const lightbox = new SimpleLightbox('.gallery a', {
-    captionsData: 'alt',
-    captionDelay: 250,
-  });
-
-  lightbox.refresh(); // Оновлюємо lightbox
   return arr.map(articleTemplate).join('');
 }
 
 // ============================================ викликаємо розмітку =======================================
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
 export function renderArticles(arr) {
   const markup = articlesTemplate(arr);
   gallery.insertAdjacentHTML('beforeend', markup);
+  lightbox.refresh(); // Оновлюємо lightbox
 }

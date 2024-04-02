@@ -27,7 +27,7 @@ async function onFormSubmit(e) {
 
   try {
     loader.classList.remove('loader-hidden'); // Показати анімацію перед запитом
-    const query = e.target.elements.query.value.trim(); // Отримання значення поля вводу
+    query = e.target.elements.query.value.trim(); // Отримання значення поля вводу
     const data = await getArticles(query, currentPage);
 
     maxPage = Math.ceil(data.totalHits / pageSize); // Округляємо кількість запитів що нам будуть доступні
