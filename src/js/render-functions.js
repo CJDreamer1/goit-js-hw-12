@@ -30,12 +30,12 @@ export function articleTemplate(obj) {
 
 // ================================================ функція яка створює розимітку для масива ====================================
 function articlesTemplate(arr) {
-  const lightbox = new SimpleLightbox('.gallery a', {
-    captionsData: 'alt',
-    captionDelay: 250,
-  });
+  //   const lightbox = new SimpleLightbox('.gallery a', {
+  //     captionsData: 'alt',
+  //     captionDelay: 250,
+  //   });
 
-  lightbox.refresh(); // Оновлюємо lightbox
+  //   lightbox.refresh(); // Оновлюємо lightbox
   return arr.map(articleTemplate).join('');
 }
 
