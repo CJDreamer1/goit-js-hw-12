@@ -32,7 +32,18 @@ async function onFormSubmit(e) {
 
     maxPage = Math.ceil(data.totalHits / pageSize); // Округляємо кількість запитів що нам будуть доступні
 
-    renderArticles(data.hits);
+    if (data.hits.length === 0) {
+      // Якщо отримано порожній масив зображень, показати повідомлення про відсутність зображень
+      iziToast.error({
+        position: 'topRight',
+        color: 'blue',
+        title: 'Error',
+        message:
+          'Sorry, there are no images matching your search query. Please try again!',
+      });
+    } else {
+      renderArticles(data.hits);
+    }
   } catch (error) {
     console.log(error);
   }
@@ -67,12 +78,15 @@ function hideLoadMore() {
 function checkBtnStatus() {
   if (currentPage >= maxPage) {
     hideLoadMore();
-    iziToast.error({
-      position: 'topRight',
-      color: 'blue',
-      title: 'Error',
-      message: "We're sorry, but you've reached the end of search results.",
-    });
+
+    if (currentPage > 1) {
+      iziToast.error({
+        position: 'topRight',
+        color: 'blue',
+        title: 'Error',
+        message: "We're sorry, but you've reached the end of search results.",
+      });
+    }
   } else {
     showLoadMore();
   }

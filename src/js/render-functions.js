@@ -32,7 +32,6 @@ export function articleTemplate(obj) {
 function articlesTemplate(arr) {
   return arr.map(articleTemplate).join('');
 }
-
 // ============================================ викликаємо розмітку =======================================
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
